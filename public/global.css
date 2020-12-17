@@ -1,23 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 :root  {
-	--purple: #7d84b2var(--blue);
+	--purple: #7d84b2;
+	--blue: #8FA6CB;
 	--mint: #dff6eaff;
 	--black: #2f323aff;
 	--yellow: #EEDD9F;
 	--lightyellow: #fffbe4;
+	--white: #fff;
 
+	/* theming values */
 	--font: 'DM Mono', monospace;
 	--fontColor: var(--black);
+	--linkColorHover: var(--yellow);
+	--linkBgHover: var(--black);
 
 	--bg: var(--mint);
 	--shadow: 4px 4px 0px var(--black);
 	--border: 1px solid var(--black);
+
+	--inputBg: var(--lightyellow);
+	--inputTextColor: var(--black);
 }
+/* themes */
+.minty {
+	--fontColor: var(--black);
+	--linkColorHover: var(--yellow);
+	--linkBgHover: var(--black);
+	--bg: var(--mint);
+	--shadow: 4px 4px 0px var(--black);
+	--border: 1px solid var(--black);
+	--inputBg: var(--lightyellow);
+}
+.dark {
+	--fontColor: var(--mint);
+	--linkColorHover: var(--black);
+	--linkBgHover: var(--mint);
+	--bg: var(--black);
+	--shadow: 4px 4px 0px var(--mint);
+	--border: 1px solid var(--black);
+	--inputBg: var(--lightyellow);
+}
+.beachy {
+	--fontColor: var(--black);
+	--linkColorHover: var(--black);
+	--linkBgHover: var(--blue);
+	--bg: var(--yellow);
+	--shadow: 4px 4px 0px var(--black);
+	--border: 1px solid var(--black);
+	--inputBg: var(--lightyellow);
+}
+.cobalt2 {
+--linkColorHover:#80FFBB;
+--bg: #193549;
+--fontColor: #80FCFF;
+--border: #1F4662;
+--shadow: 4px 4px 0px #5a7b92;
+--linkBgHover: #122738;
+--inputBg: #f7d96d;
+}
+
 html, body {
 	position: relative;
 	width: 100%;
 	height: 100%;
 	background: var(--bg);
+	background-image: var(--bgImage);
 }
 
 body {
@@ -25,19 +72,19 @@ body {
 	margin: 0;
 	box-sizing: border-box;
 	font-family: var(--font);
+	z-index: 0;
 }
 
 a {
-	color: var(--blue);
+	color: var(--fontColor);
 	text-decoration: none;
+	padding: 0.1rem;
 }
 
 a:hover {
-	text-decoration: underline;
-}
-
-a:visited {
-	color:var(--blue);
+	text-decoration: none;
+	color:var(--linkColorHover);
+	background:var(--linkBgHover);
 }
 
 label {
@@ -55,8 +102,9 @@ input, button, select, textarea {
 	box-sizing: border-box;
 	border: var(--border);
 	border-radius: 2px;
-	background: var(--lightyellow);
+	background: var(--inputBg);
 	box-shadow: var(--shadow);
+	color: var(--inputTextColor);
 }
 
 input:hover, button:hover, select:hover, textarea:hover {
@@ -78,7 +126,7 @@ input:disabled {
 }
 
 button {
-	color: var(--black);
+	/* color: var(--textColor); */
 	outline: none;
 }
 

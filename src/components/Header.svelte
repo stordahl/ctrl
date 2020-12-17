@@ -8,8 +8,8 @@
     <p>a tool for managing</p>
     <p>executive dysfunction</p>
   </div>
-  <div>
-    <a href="https://ko-fi.com/stordahl">
+  <div id="coffee">
+    <a href="https://ko-fi.com/stordahl" target="_blank">
       <Coffee width={40}/>
     </a>
   </div>
@@ -29,5 +29,15 @@
 
   header > *{
     margin:1.5rem;
+  }
+
+  #coffee {
+      display: none;
+    }
+
+  @media screen and (min-width: 600px){
+    #coffee {
+      display: block;
+    }
   }
 </style>

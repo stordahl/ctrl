@@ -1,105 +1,11 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+# ctrl: a tool for managing executive dysfunction
 
----
+ctrl is a temporary to-do list with an integrated mechanism built to assist people living with executive disfunction, in completing necessary tasks in a sustainable &amp; healthy manner.
 
-# svelte app
+## motivations
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+This app was inspired by TikTok user @danidonovan , who laid out this methodology for accomplishing tasks if you live with executive dysfunction. The idea is that you make a list of tasks and assign each of those tasks a specified number of sides on your dice based on the task's priority to you. You then roll the dice to determine which task you will complete first. The dice roll will fall within the range of sides for one of the tasks; this it the task you will complete! The goal of this app is to provide a digital tool to facilitate this exercise. You can find the TikTok explaining this concept [here](https://vm.tiktok.com/ZMJbG48w5/)
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+## basic mechanics
 
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
-
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
-
-## Get started
-
-Install the dependencies...
-
-```bash
-cd svelte-app
-npm install
-```
-
-...then start [Rollup](https://rollupjs.org):
-
-```bash
-npm run dev
-```
-
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
-
-If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
-
-## Building and running in production mode
-
-To create an optimised version of the app:
-
-```bash
-npm run build
-```
-
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
-
-
-## Single-page app mode
-
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
-```
-
-## Using TypeScript
-
-This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
-
-```bash
-node scripts/setupTypeScript.js
-```
-
-Or remove the script via:
-
-```bash
-rm scripts/setupTypeScript.js
-```
-
-## Deploying to the web
-
-### With [Vercel](https://vercel.com)
-
-Install `vercel` if you haven't already:
-
-```bash
-npm install -g vercel
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-vercel deploy --name my-project
-```
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
+There are two section in ctrl; the dice operator and the task record. Users should first add however many tasks they want to accomplish to the task record. Then we can move to the priority dropdown: located next to each text input in the task item. this number corresponds to a number of sides on the dice. For example, if I set my first task to 5, I will complete this task if I roll anywhere from 1 to 5. The more sides you assign to a given task, the higher the priority is.

@@ -3,7 +3,7 @@
 	import Header from './components/Header.svelte'
 	import Footer from './components/Footer.svelte'
 	import Content from './components/Content.svelte'
-  import Modal from './components/Modal.svelte'
+	import Modal from './components/Modal.svelte'
 
 	//module imports
 	import { onMount } from 'svelte'
@@ -49,11 +49,11 @@
 		text: ''
 	};
 	$: if (priorityTotal === sizeOfDice){ 
-		message = {color: 'green', text: 'success!'}
+		message = {color: 'green', text: ' '}
 	} else if(priorityTotal === 0) {
 		message = {color: ' ', text: ' '}
 	} else {
-		message = {color: 'red', text: 'error'}
+		message = {color: 'red', text: ' '}
 	}
 	
 	let calcState;
@@ -85,13 +85,19 @@
 		}
 	}
 
-	onMount(() => {
-		const keyPress = (e) => {
-    	if(e.key === "Escape") {
-        document.getElementsByTagName("input").blur(); 
-			}
-		};  	
-	});
+	let ifTasksIsLong;
+
+	$: if(tasks.length >= 4)
+	{ ifTasksIsLong = true } 
+	else { ifTasksIsLong = false}
+
+	// onMount(() => {
+	// 	const keyPress = (e) => {
+  //   	if(e.key === "Escape") {
+  //       document.getElementsByTagName("input").blur(); 
+	// 		}
+	// 	};  	
+	// });
 </script> 
 
 <Modal>
@@ -128,7 +134,7 @@
 				<button on:click|preventDefault={addTask}> Add task </button>
 			</div>
 			<div id="tasks-container">
-				{#each tasks as task}
+				{#each tasks.slice(0,sizeOfDice) as task}
 					<div class="task" style="opacity:{setCompleted(task)}%; transition: all .2s ease-in-out 0s ;" transition:fly="{{delay: 25, duration: 250, x: 0, y: 50, opacity: 0.5, easing: quintOut}}">
 						<input type="text" bind:value={task.task} />
 						<select bind:value={task.priority}>
@@ -150,7 +156,7 @@
 		</form>
 	</div>
 </div>
-<Footer />
+<Footer { ifTasksIsLong }/>
 
 <style>
 	h1 {
@@ -165,6 +171,9 @@
 		min-width: 250px;
 		max-width: 90vw;
 		margin-top: 3rem;
+		margin-bottom: 6rem;
+		z-index: 1;
+		position: relative;
 	}
 	#dice-grid {
 		display: flex;
@@ -189,7 +198,7 @@
 	.task {
 		max-height: 35px;
 		display: grid;
-		grid-template-columns: 8fr 2fr 1fr 2fr 1fr;
+		grid-template-columns: 8fr 2fr 1fr 70px 1fr;
 		grid-template-rows: auto;
 		gap: 1rem;
 		align-items: center;
