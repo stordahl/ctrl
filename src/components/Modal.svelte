@@ -34,7 +34,6 @@
   let Component = null;
   let props = null;
   let background;
-  let wrap;
   let modalWindow;
   const camelCaseToDash = str => str
     .replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
@@ -92,9 +91,7 @@
   };
   const handleOuterClick = (event) => {
     if (
-      state.closeOnOuterClick && (
-        event.target === background || event.target === wrap
-      )
+      state.closeOnOuterClick && event.target === background
     ) {
       event.preventDefault();
       close();
@@ -115,12 +112,11 @@
     justify-content: center;
     width: 100vw;
     height: 100vh;
+    /* HACK some mobile browsers measure vh 
+       incorrectly due to the address bar auto-hiding */
+    height: calc(100vh - calc(100vh - 100%));
+    padding: 2rem;
     background: rgba(0, 0, 0, 0.66);
-  }
-  .window-wrap {
-    position: relative;
-    margin: 2rem;
-    max-height: 100%;
   }
   .window {
     position: relative;
@@ -135,7 +131,7 @@
   .content {
     position: relative;
     padding: 1rem;
-    max-height: calc(100vh - 4rem);
+    max-height: 100%;
     overflow: auto;
   }
   .close {
@@ -213,7 +209,6 @@
     transition:currentTransitionBg={state.transitionBgProps}
     style={cssBg}
   >
-    <div class="window-wrap" bind:this={wrap}>
       <div
         class="window"
         role="dialog"
@@ -237,7 +232,6 @@
           <svelte:component this={Component} {...props} />
         </div>
       </div>
-    </div>
   </div>
 {/if}
 <slot></slot>
