@@ -1,12 +1,12 @@
 <script>
 	//component imports
+	import Seo from './components/Seo.svelte'
 	import Header from './components/Header.svelte'
 	import Footer from './components/Footer.svelte'
 	import Content from './components/Content.svelte'
 	import Modal from './components/Modal.svelte'
 
 	//module imports
-	import { onMount } from 'svelte'
 	import { fly } from 'svelte/transition'
 	import { quintOut } from 'svelte/easing'
 
@@ -30,6 +30,7 @@
 	}
 	
 	//create and store tasks
+	//initialized with one task
 	let tasks = [{id: 0, task: '', priority: 0, completed: false}]
 	const addTask = () => { 
 		let taskShape = {id: tasks.length, task: '', priority: 0, completed: false}
@@ -39,11 +40,12 @@
 	const removeTask = (elem) => {
 		tasks = tasks.filter((e) => {return e.id !== elem.id});
 	};
-  
-	$: priorityTotal = tasks.map(a => a.priority).reduce((t, n) => t + n, 0);
 	
+	//calculate total priority of all tasks & the remainder value
+	$: priorityTotal = tasks.map(a => a.priority).reduce((t, n) => t + n, 0);
 	$: remainder = sizeOfDice - priorityTotal;
 	
+	//validating the difference between priority of all tasks & size of the dice
 	let message = {
 		color: '',
 		text: ''
@@ -56,8 +58,8 @@
 		message = {color: 'red', text: ' '}
 	}
 	
+	//calculate range to display based on # of tasks
 	let calcState;
-	
 	const calcRange = (task) => {
 		let index = tasks.indexOf(task)
 		let n1
@@ -73,10 +75,11 @@
 			calcState = n2
 		}
 		
-		let range = `${n1} - ${n2}`
+		let range = `${n1}-${n2}`
 		return range
 	};
 	
+	//change task style when checkbox is checked
 	$: setCompleted = (task) => {
 		if(task.completed){
 			return 50
@@ -85,21 +88,14 @@
 		}
 	}
 
+	//dynamic styling for footer
 	let ifTasksIsLong;
-
 	$: if(tasks.length >= 4)
 	{ ifTasksIsLong = true } 
 	else { ifTasksIsLong = false}
-
-	// onMount(() => {
-	// 	const keyPress = (e) => {
-  //   	if(e.key === "Escape") {
-  //       document.getElementsByTagName("input").blur(); 
-	// 		}
-	// 	};  	
-	// });
 </script> 
 
+<Seo />
 <Modal>
 	<Content />
 </Modal>
@@ -198,11 +194,12 @@
 	.task {
 		max-height: 35px;
 		display: grid;
-		grid-template-columns: 8fr 2fr 1fr 70px 1fr;
+		grid-template-columns: 154px 2fr 1fr 43px 1fr;
 		grid-template-rows: auto;
-		gap: 1rem;
+		gap: .75rem;
 		align-items: center;
 		margin-bottom: .75rem;
+		max-width: 100%;
 	}
 	.task > * {
 		max-height: 35px;
@@ -225,5 +222,10 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		transition: all .2s ease-in-out 0s ;
+	}
+	@media screen and (min-width: 415px){
+		.task {
+			grid-template-columns: 185px 2fr 1fr 43px 1fr;
+		}
 	}
 </style>
