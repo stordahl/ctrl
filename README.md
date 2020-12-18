@@ -1,6 +1,6 @@
 # ctrl: a tool for managing executive dysfunction
 
-ctrl is a temporary to-do list with an integrated mechanism built to assist people living with executive disfunction, in completing necessary tasks in a sustainable &amp; healthy manner.
+ctrl is a temporary to-do list with an integrated mechanism built to assist people living with executive dysfunction, in completing necessary tasks in a sustainable &amp; healthy manner.
 
 ## motivations
 
