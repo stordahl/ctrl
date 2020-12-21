@@ -26,7 +26,7 @@
     align-items: center;
     margin: 1.25rem;
     margin-top: 3rem;
-    width: calc(100% - 2.5rem);
+    /* width: calc(100% - 2.5rem); */
     background: var(--bg);
   }
   p {
