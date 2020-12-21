@@ -24,10 +24,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    /* margin: 1.25rem; */
     padding: 0 1.25rem;
-    margin-top: 3rem;
-    /* width: calc(100% - 2.5rem); */
+    margin: 3rem 0;
     background: var(--bg);
   }
   p {
