@@ -18,6 +18,7 @@
 
 <style>
   footer {
+    position: relative;
     z-index: 0;
     display: flex;
     flex-direction: column;
@@ -26,6 +27,7 @@
     margin: 1.25rem;
     margin-top: 3rem;
     width: calc(100% - 2.5rem);
+    background: var(--bg);
   }
   p {
     margin: 0;
