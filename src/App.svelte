@@ -31,9 +31,9 @@
 	
 	//create and store tasks
 	//initialized with one task
-	let tasks = [{id: 0, task: '', priority: 0, completed: false}]
+	let tasks = [{id: 0, task: '', priority: 1, completed: false}]
 	const addTask = () => { 
-		let taskShape = {id: tasks.length, task: '', priority: 0, completed: false}
+		let taskShape = {id: tasks.length, task: '', priority: remainder, completed: false}
 		tasks.push(taskShape)
 		tasks = tasks
 	}
