@@ -194,7 +194,7 @@
 	.task {
 		max-height: 35px;
 		display: grid;
-		grid-template-columns: 154px 2fr 1fr 43px 1fr;
+		grid-template-columns: minmax(132px, 185px) 2fr 1fr 43px 1fr;
 		grid-template-rows: auto;
 		gap: .75rem;
 		align-items: center;
@@ -222,10 +222,5 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		transition: all .2s ease-in-out 0s ;
-	}
-	@media screen and (min-width: 415px){
-		.task {
-			grid-template-columns: 185px 2fr 1fr 43px 1fr;
-		}
 	}
 </style>

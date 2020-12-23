@@ -27,6 +27,7 @@
     padding: 0 1.25rem;
     margin: 3rem 0;
     background: var(--bg);
+    width: calc(100% - 2.5rem);
   }
   p {
     margin: 0;
