@@ -22,11 +22,16 @@
 
 	//current dice roll
 	let rollValue = 0
+	let error
 	const rollDice = (sizeOfDice) => {
 		let dice = createDice(sizeOfDice);
-		if (remainder === 0){
-			return rollValue = dice[Math.floor(Math.random() * dice.length)];
-		} else { alert('You can not roll until the remainder is 0!') }
+			if (remainder === 0){
+				error = false
+				return rollValue = dice[Math.floor(Math.random() * dice.length)];
+			} else { 
+				error = true; 
+        setTimeout(() => { error = false; }, 500);
+			}
 	}
 	
 	//create and store tasks
@@ -51,11 +56,11 @@
 		text: ''
 	};
 	$: if (priorityTotal === sizeOfDice){ 
-		message = {color: 'green', text: ' '}
+		message = {color: 'rgb(22, 120, 39)', text: ' '}
 	} else if(priorityTotal === 0) {
 		message = {color: ' ', text: ' '}
 	} else {
-		message = {color: 'red', text: ' '}
+		message = {color: 'rgb(200, 70, 70)', text: ' '}
 	}
 	
 	//calculate range to display based on # of tasks
@@ -103,7 +108,7 @@
 <div id="grid">
 	<div id="dice-grid">
 		<div>
-			<h1 on:click={() => rollDice(sizeOfDice)}>{ rollValue }</h1>
+			<h1 on:click={() => rollDice(sizeOfDice)} tabindex=0>{ rollValue }</h1>
 			<p>click # to roll</p>
 		</div>
 		<div>
@@ -124,7 +129,7 @@
 		<form>
 			<div id="task-header">
 				<div>
-					<h3 style=color:{message.color}>{priorityTotal} of {sizeOfDice} <span>{message.text}</span></h3>
+					<h3 style=color:{message.color} class:error={error}>{priorityTotal} of {sizeOfDice} <span>{message.text}</span></h3>
 					<p>remainder: {remainder} </p>
 				</div>
 				<button on:click|preventDefault={addTask}> Add task </button>
@@ -155,6 +160,24 @@
 <Footer { ifTasksIsLong }/>
 
 <style>
+
+	.error {
+		-webkit-animation: bgcolorchange 4s; /* Chrome, Safari, Opera */ 
+		animation: .85s bgcolorchange;
+	}
+	@keyframes bgcolorchange {
+		0% {
+			background-color: transparent;
+		}
+		50% {
+			background-color: rgb(200, 70, 70);
+			color: white;
+		}
+		100% {
+			background-color: transparent;
+		}
+	}
+
 	h1 {
 		font-size: 3rem;
 	}
